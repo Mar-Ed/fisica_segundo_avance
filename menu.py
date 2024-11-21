@@ -4,9 +4,10 @@ from tkinter import Label, Button, Toplevel
 from PIL import Image, ImageTk 
 from main import iniciar_simulacion
 import threading 
+import webbrowser 
 # Configuración de la ventana principal
 root = tk.Tk()
-root.title("Simulador del Efecto Doppler")
+root.title("Comportamiento del Efecto Doppler")
 ancho_ventana = 1000
 alto_ventana = 600
 root.geometry(f"{ancho_ventana}x{alto_ventana}")  # Ajustar el tamaño de la ventana
@@ -35,11 +36,15 @@ imagen_que_es_btn = Image.open(ruta_que_es_btn)
 imagen_que_es_btn = imagen_que_es_btn.resize((300, 80), Image.LANCZOS)
 imagen_que_es_btn_tk = ImageTk.PhotoImage(imagen_que_es_btn)
 
-ruta_simulador_btn = "imagenes/simulador_btn.jpg"
+ruta_simulador_btn = "imagenes/comportamiento_btn.jpg"
 imagen_simulador_btn = Image.open(ruta_simulador_btn)
 imagen_simulador_btn = imagen_simulador_btn.resize((300, 80), Image.LANCZOS)
 imagen_simulador_btn_tk = ImageTk.PhotoImage(imagen_simulador_btn)
 
+ruta_simulador_web_btn = "imagenes/simulador_btn.jpg"
+imagen_simulador_web_btn = Image.open(ruta_simulador_web_btn)
+imagen_simulador_web_btn = imagen_simulador_web_btn.resize((300, 80), Image.LANCZOS)
+imagen_simulador_web_btn_tk = ImageTk.PhotoImage(imagen_simulador_web_btn)
 # Función para mostrar una nueva ventana con la definición del Efecto Doppler
 def mostrar_info_doppler():
     # Crear una nueva ventana con el mismo tamaño que la principal
@@ -68,12 +73,17 @@ def mostrar_info_doppler():
 def iniciar_simulador():
     iniciar_simulacion()
 
+def abrir_simulacion_web():
+    url = "https://www.educaplus.org/game/efecto-doppler"
+    webbrowser.open(url)
 # Crear botones con las imágenes y centrarlos en la parte derecha de la ventana
 boton_que_es = Button(root, image=imagen_que_es_btn_tk, command=mostrar_info_doppler, borderwidth=0)
-boton_que_es.place(x=600, y=200)
+boton_que_es.place(x=600, y=100)
 
 boton_simulador = Button(root, image=imagen_simulador_btn_tk, command=iniciar_simulador, borderwidth=0)
-boton_simulador.place(x=600, y=320)
+boton_simulador.place(x=600, y=220)
 
+boton_simulador_doppler = Button(root, image=imagen_simulador_btn_tk, command=abrir_simulacion_web, borderwidth=0)
+boton_simulador_doppler.place(x=600, y=340)
 # Ejecuta el loop principal de la ventana
 root.mainloop()
