@@ -3,14 +3,16 @@ from doppler import Doppler
 import matplotlib.pyplot as plt
 from scipy.io.wavfile import write
 
-def iniciar_simulacion():
+def iniciar_simulacion(x,y,f,xx):
     # Valores físicos
+    velocidad_fuente= (x*np.sqrt(2))/2
+    velocidad_observador= (y*np.sqrt(2))/2
     v_sound = 330.0  # Velocidad del sonido
     x_source, y_source = (0, 0)  # Coordenadas de la fuente
-    x_observer, y_observer = (10, 0)  # Coordenadas del observador
-    vx_source, vy_source = (100, 100)  # Velocidad de la fuente
-    vx_observer, vy_observer = (0, 0)  # Velocidad del observador
-    frequency = 100  # Frecuencia de la onda sonora (entero)
+    x_observer, y_observer = (xx, 0)  # Coordenadas del observador
+    vx_source, vy_source = (velocidad_fuente, velocidad_fuente)  # Velocidad de la fuente
+    vx_observer, vy_observer = (velocidad_observador, velocidad_observador)  # Velocidad del observador
+    frequency = f  # Frecuencia de la onda sonora (entero)
 
     # Valores del programa
     max_waves = frequency / 5
