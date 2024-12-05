@@ -30,6 +30,8 @@ bg_fondo = tk.PhotoImage(file='./imagenes/fondo_veloc_fuente.png')
 bg_width = bg_fondo.width()
 bg_height = bg_fondo.height()
 
+
+
 # Ajustar el tamaño de la ventana al tamaño de la imagen
 root.geometry(f"{bg_width}x{bg_height}")
 
@@ -47,19 +49,19 @@ bg_velocidad_fuente = tk.PhotoImage(file='./imagenes/label_vel_fuente.png').subs
 # Etiquetas con imágenes (labels)
 label_velocidad_medio = tk.Label(root, image=bg_velocidad_medio, compound="left")
 label_velocidad_medio.grid(row=0, column=0, sticky="w", padx=10, pady=5)
-label_velocidad_medio.place(x=50, y=220)
+label_velocidad_medio.place(x=10, y=220)
 
 label_velocidad_observador = tk.Label(root, image=bg_velocidad_observador, compound="left")
 label_velocidad_observador.grid(row=1, column=0, sticky="w", padx=10, pady=5)
-label_velocidad_observador.place(x=50, y=290)
+label_velocidad_observador.place(x=10, y=290)
 
 label_frecuencia_emitida = tk.Label(root, image=bg_frecuencia_emitida, compound="left")
 label_frecuencia_emitida.grid(row=2, column=0, sticky="w", padx=10, pady=5)
-label_frecuencia_emitida.place(x=50, y=360)
+label_frecuencia_emitida.place(x=10, y=360)
 
 label_frecuencia_observada = tk.Label(root, image=bg_frecuencia_observada, compound="left")
 label_frecuencia_observada.grid(row=3, column=0, sticky="w", padx=10, pady=5)
-label_frecuencia_observada.place(x=50, y=430)
+label_frecuencia_observada.place(x=10, y=430)
 
 label_velocidad_fuente = tk.Label(root, image=bg_velocidad_fuente, compound="left")
 label_velocidad_fuente.grid(row=4, column=0, sticky="w", padx=10, pady=5)
@@ -68,23 +70,30 @@ label_velocidad_fuente.place(x=520, y=420)
 # Entradas de texto (txt_ entradas) con place para posicionarlas al costado de las etiquetas
 entry_velocidad_medio = tk.Entry(root)
 entry_velocidad_medio.insert(0, "343.2")  # Valor por defecto
-entry_velocidad_medio.place(x=300, y=240)  # Posición al costado de la etiqueta
+entry_velocidad_medio.place(x=250, y=240)  # Posición al costado de la etiqueta
 
 entry_velocidad_observador = tk.Entry(root)
-entry_velocidad_observador.place(x=300, y=310)  # Posición al costado de la etiqueta
+entry_velocidad_observador.place(x=250, y=310)  # Posición al costado de la etiqueta
 
 entry_frecuencia_emitida = tk.Entry(root)
-entry_frecuencia_emitida.place(x=300, y=380)  # Posición al costado de la etiqueta
+entry_frecuencia_emitida.place(x=250, y=380)  # Posición al costado de la etiqueta
 
 entry_frecuencia_observada = tk.Entry(root)
-entry_frecuencia_observada.place(x=300, y=450)  # Posición al costado de la etiqueta
+entry_frecuencia_observada.place(x=250, y=450)  # Posición al costado de la etiqueta
 
 entry_velocidad_fuente = tk.Entry(root, state="normal")
-entry_velocidad_fuente.place(x=300, y=500)  # Posición al costado de la etiqueta
+entry_velocidad_fuente.place(x=720, y=435)  # Posición al costado de la etiqueta
 
 # Botón para calcular
-btn_calcular = tk.Button(root, text="Calcular", command=calcular_vf)
-btn_calcular.grid(row=5, columnspan=2, pady=20)
-btn_calcular.place(x=440, y=550)
+btn_calcular = tk.Button(root, text="Calcular", command=calcular_vf,
+                         bg="#0097b2", fg="white", font=("Arial", 12, "bold"),
+                         relief="flat", borderwidth=2, padx=10, pady=0,
+                         highlightthickness=0, bd=0, 
+                         activebackground="#006f8e", activeforeground="white")
+
+# Usar un borde redondeado con un pequeño truco
+btn_calcular.config(highlightthickness=1, bd=1)
+btn_calcular.place(x=400, y=420)
+
 
 root.mainloop()
